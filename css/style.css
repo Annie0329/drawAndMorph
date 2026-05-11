@@ -1,0 +1,63 @@
+body {
+    font-family: sans-serif;
+}
+
+.end1,
+.end2 {
+    visibility: hidden;
+}
+
+/* .morphZone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} */
+
+/* side-by-side layout */
+/* .stage {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+} */
+
+/* overlay container */
+.stack {
+    position: relative;
+    width: 300px;
+    height: 300px;
+}
+
+/* right-side morph svg */
+.morphSvg {
+    width: 300px;
+    height: 300px;
+    border: 1px solid #333;
+}
+
+/* canvas base */
+.stack canvas {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #333;
+    cursor: crosshair;
+    touch-action: none;
+    position: relative;
+    z-index: 2;
+}
+
+/* gray svg overlay */
+.stack .guideSvg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    /* IMPORTANT */
+    z-index: 1;
+}
+
+#morphSlider {
+    width: 100%;
+    margin-top: 20px;
+}
