@@ -1,4 +1,4 @@
-const svgText = `
+var svgText = `
 <g>
 	<path class="st0" d="M195.8,169.5c31,7.5,54.3,15.6,69.8,24.3c13.6,10.3,20.5,24.2,20.5,41.8c0,28.2-11.6,42.3-34.8,42.3
 		c-7.9,0-16.3-3.6-25.1-10.9c-16.7-13.1-40.4-40.8-70.9-83.2c-4.1-4.3-5.9-7.6-5.9-9.9c1.6-6.6,5.1-9.9,10.8-9.9
@@ -39,27 +39,34 @@ const svgText = `
 		c21.9-2.6,36.3-3.8,43.6-3.8H694.4z"/>
 </g>
 `
-const parser = new DOMParser();
-const doc = parser.parseFromString(svgText, "image/svg+xml");
-
-const paths = doc.querySelectorAll("path");
-
-const morphGroup = document.getElementById("morph");
-const morphGroupGray = document.getElementById("morphGray");
-pathAmount = 0
 
 function createElement(path, index, name) {
-    const d = path.getAttribute("d");
+	const d = path.getAttribute("d");
 
-    const start = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    start.setAttribute("d", d);
-    start.setAttribute("class", name + String(index) + " " + name + "Class");
+	const start = document.createElementNS("http://www.w3.org/2000/svg", "path");
+	start.setAttribute("d", d);
+	start.setAttribute("class", name + String(index) + " " + name + "Class");
 
-    return start
+	return start
 }
-paths.forEach((path, index) => {
-    morphGroup.appendChild(createElement(path, index, "start"));
-    morphGroup.appendChild(createElement(path, index, "end"));
-    morphGroupGray.appendChild(createElement(path, index, "gray"));
-    pathAmount++;
-});
+getSVG()
+function getSVG() {
+	const parser = new DOMParser();
+	const doc = parser.parseFromString(svgText, "image/svg+xml");
+
+	const paths = doc.querySelectorAll("path");
+
+	const morphGroup = document.getElementById("morph");
+	const morphGroupGray = document.getElementById("morphGray");
+	pathAmount = 0
+
+	morphGroup.innerHTML = ""
+	morphGroupGray.innerHTML = ""
+
+	paths.forEach((path, index) => {
+		morphGroup.appendChild(createElement(path, index, "start"));
+		morphGroup.appendChild(createElement(path, index, "end"));
+		morphGroupGray.appendChild(createElement(path, index, "gray"));
+		pathAmount++;
+	});
+}

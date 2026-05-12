@@ -5,10 +5,17 @@ var count = 0;
 const writingZone = document.getElementById("writingZone")
 const menu = document.getElementById("menu")
 writingZone.style.display = "none"
+
 document.getElementById("ok").addEventListener("click", () => {
     writingZone.style.display = "block"
     menu.style.display = "none"
-})
+
+    // ✅ FIX: wait for layout, then resize
+    requestAnimationFrame(() => {
+        resizeCanvas();
+    });
+});
+
 //設定按鈕
 document.getElementById("setting").addEventListener("click", () => {
     writingZone.style.display = "none"
@@ -288,7 +295,13 @@ function exportCurrentMorphSVG() {
 
     source = `<?xml version="1.0" encoding="UTF-8"?>\n` + source;
 
-    downloadSVG(source);
+    svgText = source;
+    getSVG();
+    // downloadSVG(source);
+    //清除畫布
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    strokePoints = [];
+    count = 0
 }
 
 

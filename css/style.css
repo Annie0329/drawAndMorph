@@ -2,10 +2,6 @@ body {
     font-family: sans-serif;
 }
 
-.menu {
-    width: 100%;
-}
-
 img {
     width: 100%;
 }
@@ -49,7 +45,7 @@ img {
 }
 
 /* gray svg overlay */
-.stack .guideSvg {
+.guideSvg {
     position: absolute;
     inset: 0;
     width: 100%;

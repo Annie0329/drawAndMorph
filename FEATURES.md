@@ -1,4 +1,4 @@
 - [v] T1: 新增選單頁面
-- [ ] T2: 按export後svg會變成morph結果
+- [v] T2: 按export後svg會變成morph結果
 - [ ] T3: 增加更多字
 - [ ] T4: 美編
