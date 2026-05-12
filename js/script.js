@@ -15,7 +15,14 @@ document.getElementById("ok").addEventListener("click", () => {
         resizeCanvas();
     });
 });
-
+//下一個字
+document.getElementById("nextChar").addEventListener("click", () => {
+    dataNum++
+    getSVG(svgData[dataNum]["svg"])
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    strokePoints = [];
+    count = 0
+})
 //設定按鈕
 document.getElementById("setting").addEventListener("click", () => {
     writingZone.style.display = "none"
@@ -295,8 +302,7 @@ function exportCurrentMorphSVG() {
 
     source = `<?xml version="1.0" encoding="UTF-8"?>\n` + source;
 
-    svgText = source;
-    getSVG();
+    getSVG(source);
     // downloadSVG(source);
     //清除畫布
     ctx.clearRect(0, 0, canvas.width, canvas.height);
