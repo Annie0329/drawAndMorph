@@ -1,32 +1,55 @@
 gsap.registerPlugin(MorphSVGPlugin);
-var count = 1;
-// Create a paused tween
-const morphTween1 = gsap.to(".start1", {
-    morphSVG: ".end1",
-    ease: "none",
-    paused: true
-});
-const morphTween2 = gsap.to(".start2", {
-    morphSVG: ".end2",
-    ease: "none",
-    paused: true
-});
+var count = 0;
 
-var hideGray = document.getElementById("hideGray")
-
-hideGray.addEventListener("click", function () {
-    var grayVisible = document.getElementById("guideSvg")
-    if (grayVisible.style.visibility == "visible")
-        grayVisible.style.visibility = "hidden";
-    else
-        grayVisible.style.visibility = "visible";
-})
-
-// Slider control
+// mroph效果
+morphTweens = []
+for (let i = 0; i < pathAmount; i++) {
+    const morphTween = gsap.to(".start" + String(i), {
+        morphSVG: ".end" + String(i),
+        ease: "none",
+        paused: true
+    });
+    morphTweens.push(morphTween)
+}
+// 滑桿
 const slider = document.getElementById("morphSlider");
 slider.addEventListener("input", () => {
-    morphTween1.progress(slider.value);
-    morphTween2.progress(slider.value);
+    document.getElementById("morphValue").textContent = slider.value * 100
+    for (let i = 0; i < morphTweens.length; i++)
+        morphTweens[i].progress(slider.value);
+});
+
+//隱藏灰色線
+const hideGray = document.getElementById("hideGray")
+hideGray.addEventListener("click", function () {
+    var grayVisible = document.getElementById("guideSvg")
+    if (grayVisible.style.visibility != "hidden") {
+        grayVisible.style.visibility = "hidden";
+        hideGray.textContent = "顯示灰色字"
+    }
+
+    else {
+        grayVisible.style.visibility = "visible";
+        hideGray.textContent = "隱藏灰色字"
+    }
+})
+
+const guideSelector = document.getElementById("guideSelector")
+const four = document.getElementById("four")
+const nine = document.getElementById("nine")
+guideSelector.addEventListener('change', () => {
+    if (guideSelector.value == "four") {
+        four.style.visibility = "visible"
+        nine.style.visibility = "hidden"
+    }
+    else if (guideSelector.value == "nine") {
+        four.style.visibility = "hidden"
+        nine.style.visibility = "visible"
+    }
+    else {
+        four.style.visibility = "hidden"
+        nine.style.visibility = "hidden"
+    }
 });
 
 // ===============================
@@ -161,13 +184,8 @@ function buildOutline(points) {
         const p1 = points[i];
         const p2 = points[i + 1];
 
-        let dx1 = p1.x - p0.x;
-        let dy1 = p1.y - p0.y;
-        let dx2 = p2.x - p1.x;
-        let dy2 = p2.y - p1.y;
-
-        let dx = dx1 + dx2;
-        let dy = dy1 + dy2;
+        let dx = p1.x - p0.x + p2.x - p1.x;
+        let dy = p1.y - p0.y + p2.y - p1.y;
 
         const len = Math.hypot(dx, dy);
         if (len === 0) continue;
@@ -194,9 +212,7 @@ function buildOutline(points) {
     return [...left, ...right];
 }
 
-// ===============================
-// SVG export
-// ===============================
+//輸出svg
 function exportStrokeAsFilledSVG(rawPoints) {
     if (rawPoints.length < 4) return;
 
@@ -224,7 +240,7 @@ function exportStrokeAsFilledSVG(rawPoints) {
     count++;
 }
 
-
+//下載svg
 function downloadSVG(svgText) {
     const blob = new Blob([svgText], { type: "image/svg+xml;charset=utf-8" });
     const url = URL.createObjectURL(blob);
@@ -246,8 +262,7 @@ function exportCurrentMorphSVG() {
     const clone = svg.cloneNode(true);
 
     // 🔥 REMOVE morph targets (end paths)
-    clone.querySelectorAll(".end1, .end2").forEach(el => el.remove());
-
+    clone.querySelectorAll(".endClass").forEach(el => el.remove());
     // optional: remove inline styles GSAP might add
     clone.querySelectorAll("*").forEach(el => {
         el.removeAttribute("style");
