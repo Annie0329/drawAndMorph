@@ -2,6 +2,15 @@ body {
     font-family: sans-serif;
 }
 
+.menu {
+    width: 100%;
+}
+
+img {
+    width: 100%;
+}
+
+/* morph區 */
 .endClass {
     visibility: hidden;
 }

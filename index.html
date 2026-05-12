@@ -11,19 +11,36 @@
 </head>
 
 <body>
-    <button id="hideGray">隱藏灰色字</button>
-    <select id="guideSelector">
-        <option value="four">四宮格</option>
-        <option value="nine">九宮格</option>
-        <option value="none">無</option>
-    </select>
-    <br>
-    <input id="max" type="range" min="5" max="20" value="20" step="5">最粗筆畫
-    <br>
-    <input id="min" type="range" min="5" max="20" value="5" step="5">最細筆畫
-    <div class="zone">
-        <div class="charSpace">
+    <div id="menu">
+        <h1>Morphing Your Writing Goal!</h1>
+        選擇參考字型
+        <select id="fontSelector">
+            <option value="BiauKai">標楷體(BiauKai)</option>
+            <option value="LingWai">凌慧體(LingWai)</option>
+        </select>
+        <br>
+        選擇書寫內容
+        <select id="contentSelector">
+            <option value="common4808">4808常用字</option>
+            <option value="thousandWords">千字文</option>
+        </select>
+        <img src="./img/BiauKai.png" alt="BiauKai">
+        <button id="ok">OK</button>
+    </div>
+    <div id="writingZone">
+        <button id="setting">setting</button>
+        <button id="hideGray">隱藏灰色字</button>
+        <select id="guideSelector">
+            <option value="four">四宮格</option>
+            <option value="nine">九宮格</option>
+            <option value="none">無</option>
+        </select>
+        <br>
+        <input id="max" type="range" min="5" max="20" value="20" step="5">最粗筆畫
+        <br>
+        <input id="min" type="range" min="5" max="20" value="5" step="5">最細筆畫
 
+        <div class="charSpace">
             <!-- 寫字的地方 -->
             <div class="stack">
                 <!-- 畫布 -->

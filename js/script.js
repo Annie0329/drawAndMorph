@@ -1,6 +1,20 @@
 gsap.registerPlugin(MorphSVGPlugin);
 var count = 0;
 
+//切換頁面
+const writingZone = document.getElementById("writingZone")
+const menu = document.getElementById("menu")
+writingZone.style.display = "none"
+document.getElementById("ok").addEventListener("click", () => {
+    writingZone.style.display = "block"
+    menu.style.display = "none"
+})
+//設定按鈕
+document.getElementById("setting").addEventListener("click", () => {
+    writingZone.style.display = "none"
+    menu.style.display = "block"
+})
+
 // mroph效果
 morphTweens = []
 for (let i = 0; i < pathAmount; i++) {
