@@ -1,12 +1,136 @@
 body {
-    font-family: sans-serif;
+    font-family: "writesAnnie";
+    font-size: 28px;
+    background-color: #FFF6DE;
+    padding: 20px;
+    margin: 0px;
+}
+
+@font-face {
+    font-family: 'writesAnnie';
+    src:
+        url('../fonts/writesAnnie.woff2') format("woff2"),
+        url('../fonts/writesAnnie.ttf') format("ttf")
+}
+
+/* 我們都愛繼承 */
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+    font-size: inherit;
 }
 
 img {
     width: 100%;
+    object-fit: cover;
+}
+
+p {
+    margin: 0px;
+}
+
+button {
+    border: none;
+    background-color: transparent;
+}
+
+.menu {
+    display: block;
+    text-align: left;
+}
+
+.title {
+    color: #F48F68;
+    text-align: center;
+    font-weight: normal;
+}
+
+.optionZone {
+    background-color: #8BDFDD;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.option {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.morphSliderZone {
+    padding: 20px 0px;
+}
+
+#contentSelector {
+    width: 80%;
+}
+
+.iptBtn {
+    display: block;
+    /* width: 20%; */
+    text-align: center;
+    /* font-weight: bold; */
+    /* font-size: large; */
+    color: white;
+    background-color: #F48F68;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+
+}
+
+#ok {
+    margin: 0 auto;
 }
 
 /* morph區 */
+.writingZone {
+    display: flex;
+    justify-content: center;
+}
+
+.toolBar {
+    padding-bottom: 10px;
+}
+
+#min,
+#max,
+#morphSlider {
+    accent-color: #F48F68;
+}
+
+.panel {
+    max-width: 400px;
+    ;
+    margin: 0 auto;
+}
+
+.buttonZone {
+    display: flex;
+    justify-content: space-between;
+}
+
+#setting {
+    width: 60px;
+}
+
+.charSpace {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    row-gap: 20px;
+}
+
+.stack,
+.morphSvg {
+    background-color: white;
+    border: 3px solid #8BDFDD;
+}
+
 .endClass {
     visibility: hidden;
 }
@@ -22,22 +146,20 @@ img {
 /* overlay container */
 .stack {
     position: relative;
-    width: 350px;
-    height: 350px;
+    width: 250px;
+    height: 250px;
 }
 
 /* right-side morph svg */
 .morphSvg {
-    width: 350px;
-    height: 350px;
-    border: 1px solid #333;
+    width: 250px;
+    height: 250px;
 }
 
 /* canvas base */
 .stack canvas {
     width: 100%;
     height: 100%;
-    border: 1px solid #333;
     cursor: crosshair;
     touch-action: none;
     position: relative;
@@ -55,7 +177,17 @@ img {
     z-index: 1;
 }
 
+#previousChar,
+#nextChar,
+#hideGray {
+    color: black;
+    background-color: #8BDFDD;
+}
+
+#previousChar {
+    visibility: hidden;
+}
+
 #morphSlider {
-    width: 300px;
-    /* margin-top: 20px; */
+    width: 250px;
 }

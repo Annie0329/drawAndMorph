@@ -11,72 +11,101 @@
 </head>
 
 <body>
+    <!-- 選單 -->
     <div id="menu">
-        <h1>Morphing Your Writing Goal!</h1>
-        選擇參考字型
-        <select id="fontSelector">
-            <option value="BiauKai">標楷體(BiauKai)</option>
-            <option value="LingWai">凌慧體(LingWai)</option>
-        </select>
-        <br>
-        選擇書寫內容
-        <select id="contentSelector">
-            <option value="common4808">4808常用字</option>
-            <option value="thousandWords">千字文</option>
-        </select>
-        <img src="./img/BiauKai.png" alt="BiauKai">
-        <button id="ok">OK</button>
-    </div>
-    <div id="writingZone">
-        <button id="setting">setting</button>
-        <button id="hideGray">隱藏灰色字</button>
-        <select id="guideSelector">
-            <option value="four">四宮格</option>
-            <option value="nine">九宮格</option>
-            <option value="none">無</option>
-        </select>
-        <br>
-        <input id="max" type="range" min="5" max="20" value="20" step="5">最粗筆畫
-        <br>
-        <input id="min" type="range" min="5" max="20" value="5" step="5">最細筆畫
-
-        <div class="charSpace">
-            <!-- 寫字的地方 -->
-            <div class="stack">
-                <!-- 畫布 -->
-                <canvas id="drawingCanvas"></canvas>
-                <!-- 參考線 -->
-                <svg id="guideSvg" class="guideSvg" viewBox="0 0 100 100">
-                    <!-- 四宮格 -->
-                    <g id="four" transform="scale(0.1)" fill="#CCCCCC" stroke-width="10" stroke="#CCCCCC">
-                        <line x1="500" y1="0" x2="500" y2="1000" />
-                        <line x1="0" y1="500" x2="1000" y2="500" />
-                    </g>
-                    <!-- 九宮格 -->
-                    <g id="nine" transform="scale(0.1)" fill="#CCCCCC" stroke-width="10" stroke="#CCCCCC">
-                        <line x1="333" y1="0" x2="333" y2="1000" />
-                        <line x1="666" y1="0" x2="666" y2="1000" />
-                        <line x1="0" y1="333" x2="1000" y2="333" />
-                        <line x1="0" y1="666" x2="1000" y2="666" />
-                    </g>
-                    <!-- 灰色字 -->
-                    <g id="morphGray" transform="scale(0.1)" fill="#CCCCCC" stroke="#CCCCCC"></g>
-                </svg>
+        <h1 class="title">Morph Your Handwriting Goal!</h1>
+        <div class="optionZone">
+            <div class="option">
+                <p>Reference Font Type</p>
+                <select id="fontSelector">
+                    <option value="BiauKai">BiauKai</option>
+                    <option value="LingWai">LingWai</option>
+                </select>
             </div>
-
-            <!-- morph結果 -->
-            <svg class="morphSvg" viewBox="0 0 100 100">
-                <g transform="scale(0.1)" id="morph" fill="#000" stroke="#000"></g>
-            </svg>
+            <div>
+                <img class="fontImg" src="./img/BiauKai.png" alt="BiauKai">
+            </div>
+            <div class="option">
+                <p>Content</p>
+                <select id="contentSelector">
+                    <option value="common4808">4808 commonly used characters</option>
+                    <option value="thousandWords">千字文</option>
+                </select>
+            </div>
+            <div class="option">
+                <p>Guiding Style</p>
+                <select id="guideSelector">
+                    <option value="four">Four-square</option>
+                    <option value="nine">Nine-square</option>
+                    <option value="none">None</option>
+                </select>
+            </div>
+            <div class="option">
+                <p>Min Weights</p>
+                <input id="min" type="range" min="1" max="20" value="1" step="5">
+                <p id="minValue">1</p>
+            </div>
+            <div class="option">
+                <p>Max Weights</p>
+                <input id="max" type="range" min="5" max="20" value="20" step="5">
+                <p id="maxValue">20</p>
+            </div>
+            <button class="iptBtn" id="ok">OK</button>
         </div>
 
-        <button id="exportBtn">Export SVG</button>
-        <button id="nextChar">Next Character</button>
-        <br>
-        <input id="morphSlider" type="range" min="0" max="1" step="0.1" value="0" />
-        <p id="morphValue">0</p>
     </div>
+    <div class="writingZone" id="writingZone">
+        <div class="panel">
+            <div class="toolBar">
+                <div class="option">
+                    <button id="setting"><img src="./img/settings.svg" alt=""></button>
+                    <button class="iptBtn" id="hideGray">Hide Guide</button>
+                </div>
+            </div>
+            <div class="charSpace">
+                <!-- 寫字的地方 -->
+                <div class="stack">
+                    <!-- 畫布 -->
+                    <canvas id="drawingCanvas"></canvas>
+                    <!-- 參考線 -->
+                    <svg id="guideSvg" class="guideSvg" viewBox="0 0 100 100">
+                        <!-- 四宮格 -->
+                        <g id="four" transform="scale(0.1)" fill="#8BDFDD" stroke-width="10" stroke="#8BDFDD">
+                            <line x1="500" y1="0" x2="500" y2="1000" />
+                            <line x1="0" y1="500" x2="1000" y2="500" />
+                        </g>
+                        <!-- 九宮格 -->
+                        <g id="nine" transform="scale(0.1)" fill="#8BDFDD" stroke-width="10" stroke="#8BDFDD">
+                            <line x1="333" y1="0" x2="333" y2="1000" />
+                            <line x1="666" y1="0" x2="666" y2="1000" />
+                            <line x1="0" y1="333" x2="1000" y2="333" />
+                            <line x1="0" y1="666" x2="1000" y2="666" />
+                        </g>
+                        <!-- 灰色字 -->
+                        <g id="morphGray" transform="scale(0.1)" fill="#8BDFDD" stroke="#8BDFDD"></g>
+                    </svg>
+                </div>
 
+                <!-- morph結果 -->
+                <svg class="morphSvg" viewBox="0 0 100 100">
+                    <g transform="scale(0.1)" id="morph" fill="#000" stroke="#000"></g>
+                </svg>
+            </div>
+            <div>
+                <div class="option morphSliderZone">
+                    <p>Morph</p>
+                    <input id="morphSlider" type="range" min="0" max="1" step="0.1" value="0" />
+                    <p id="morphValue">0%</p>
+                </div>
+                <div class="buttonZone">
+                    <!-- <button class="iptBtn" id="previousChar">Previous Character</button> -->
+                    <button class="iptBtn" id="exportBtn">Create Goal</button>
+                    <button class="iptBtn" id="nextChar">Next Character</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
     <script src="./js/svgData.js"></script>
     <script src="./js/svg2Html.js"></script>
     <script src="./js/canvas2svg.js"></script>

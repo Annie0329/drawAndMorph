@@ -7,7 +7,9 @@ function createElement(path, index, name) {
 
 	return start
 }
-dataNum = 0
+//這：0
+//福：1
+dataNum = 2
 getSVG(svgData[dataNum]["svg"])
 function getSVG(svgData) {
 	var svgText = svgData

@@ -42,7 +42,7 @@ for (let i = 0; i < pathAmount; i++) {
 // 滑桿
 const slider = document.getElementById("morphSlider");
 slider.addEventListener("input", () => {
-    document.getElementById("morphValue").textContent = slider.value * 100
+    document.getElementById("morphValue").textContent = slider.value * 100 + "%"
     for (let i = 0; i < morphTweens.length; i++)
         morphTweens[i].progress(slider.value);
 });
@@ -53,12 +53,12 @@ hideGray.addEventListener("click", function () {
     var grayVisible = document.getElementById("guideSvg")
     if (grayVisible.style.visibility != "hidden") {
         grayVisible.style.visibility = "hidden";
-        hideGray.textContent = "顯示灰色字"
+        hideGray.textContent = "Show Guide"
     }
 
     else {
         grayVisible.style.visibility = "visible";
-        hideGray.textContent = "隱藏灰色字"
+        hideGray.textContent = "Hide Guide"
     }
 })
 
@@ -91,6 +91,7 @@ const ctx = canvas.getContext("2d");
 // ===============================
 var MIN_WIDTH = 1;
 var MAX_WIDTH = 20;
+
 document.getElementById("max").addEventListener("change", function () {
     MAX_WIDTH = document.getElementById("max").value;
     MIN_WIDTH = document.getElementById("min").value;
@@ -98,6 +99,7 @@ document.getElementById("max").addEventListener("change", function () {
         console.log("yea")
         MIN_WIDTH = parseInt(parseInt(MAX_WIDTH) - 5)
     }
+    document.getElementById("maxValue").textContent = MAX_WIDTH
     console.log(MIN_WIDTH, MAX_WIDTH)
 })
 document.getElementById("min").addEventListener("change", function () {
@@ -107,7 +109,7 @@ document.getElementById("min").addEventListener("change", function () {
         console.log("yea")
         MAX_WIDTH = parseInt(parseInt(MIN_WIDTH) + 5)
     }
-
+    document.getElementById("minValue").textContent = MIN_WIDTH
     console.log(MIN_WIDTH, MAX_WIDTH)
 })
 const SIMPLIFY_DISTANCE = 2;
