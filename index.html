@@ -13,17 +13,18 @@
 <body>
     <!-- 選單 -->
     <div id="menu">
-        <h1 class="title">Morph Your Handwriting Goal!</h1>
+        <h1 class="title">Develop Your Calligraphic Style!</h1>
         <div class="optionZone">
             <div class="option">
-                <p>Reference Font Type</p>
+                <p>Target Style Font</p>
                 <select id="fontSelector">
+                    <option value="aoyagireisyosimo">aoyagireisyosimo</option>
+                    <option value="SourceHanSerif">Source Han Serif</option>
                     <option value="BiauKai">BiauKai</option>
-                    <option value="LingWai">LingWai</option>
                 </select>
             </div>
             <div>
-                <img class="fontImg" src="./img/BiauKai.png" alt="BiauKai">
+                <img class="fontImg" src="./img/aoyagireisyosimo.png" alt="font pic">
             </div>
             <div class="option">
                 <p>Content</p>
@@ -47,8 +48,8 @@
             </div>
             <div class="option">
                 <p>Max Weights</p>
-                <input id="max" type="range" min="5" max="20" value="20" step="5">
-                <p id="maxValue">20</p>
+                <input id="max" type="range" min="5" max="30" value="25" step="5">
+                <p id="maxValue">25</p>
             </div>
             <button class="iptBtn" id="ok">OK</button>
         </div>
@@ -99,7 +100,7 @@
                 </div>
                 <div class="buttonZone">
                     <!-- <button class="iptBtn" id="previousChar">Previous Character</button> -->
-                    <button class="iptBtn" id="exportBtn">Create Goal</button>
+                    <button class="iptBtn" id="exportBtn">Create Style</button>
                     <button class="iptBtn" id="nextChar">Next Character</button>
                 </div>
 

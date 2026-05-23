@@ -90,27 +90,15 @@ const ctx = canvas.getContext("2d");
 // Config
 // ===============================
 var MIN_WIDTH = 1;
-var MAX_WIDTH = 20;
+var MAX_WIDTH = 25;
 
 document.getElementById("max").addEventListener("change", function () {
     MAX_WIDTH = document.getElementById("max").value;
-    MIN_WIDTH = document.getElementById("min").value;
-    if (MAX_WIDTH <= MIN_WIDTH) {
-        console.log("yea")
-        MIN_WIDTH = parseInt(parseInt(MAX_WIDTH) - 5)
-    }
     document.getElementById("maxValue").textContent = MAX_WIDTH
-    console.log(MIN_WIDTH, MAX_WIDTH)
 })
 document.getElementById("min").addEventListener("change", function () {
-    MAX_WIDTH = document.getElementById("max").value;
     MIN_WIDTH = document.getElementById("min").value;
-    if (MAX_WIDTH <= MIN_WIDTH) {
-        console.log("yea")
-        MAX_WIDTH = parseInt(parseInt(MIN_WIDTH) + 5)
-    }
     document.getElementById("minValue").textContent = MIN_WIDTH
-    console.log(MIN_WIDTH, MAX_WIDTH)
 })
 const SIMPLIFY_DISTANCE = 2;
 const SMOOTH_WINDOW = 2;
